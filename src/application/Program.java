@@ -45,18 +45,26 @@ public class Program {
         System.out.print("How many items in this order? ");
         int n = sc.nextInt();
 
-        for (int i = 0; i < n; i++) {
-            sc.nextLine();
-            System.out.println("Enter #" + (i + 1) + " item data:");
-            System.out.print("Product name: ");
-            String productName = sc.nextLine();
-            System.out.print("Product price: ");
-            double productPrice = sc.nextDouble();
-            System.out.print("Quantity: ");
-            int productQuantity = sc.nextInt();
-            System.out.println();
+        if (n < 1) {
+            System.out.println("Order cancelled\n");
+        }
 
-            order.addItem(new OrderItem(productQuantity, productPrice, new Product(productName, productPrice)));
+        else {
+
+            for (int i = 0; i < n; i++) {
+                sc.nextLine();
+                System.out.println("Enter #" + (i + 1) + " item data:");
+                System.out.print("Product name: ");
+                String productName = sc.nextLine();
+                System.out.print("Product price: ");
+                double productPrice = sc.nextDouble();
+                System.out.print("Quantity: ");
+                int productQuantity = sc.nextInt();
+                System.out.println();
+
+                order.addItem(new OrderItem(productQuantity, productPrice, new Product(productName, productPrice)));
+            }
+
         }
 
         System.out.println("ORDER SUMMARY: ");
