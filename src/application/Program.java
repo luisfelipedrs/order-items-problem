@@ -48,9 +48,7 @@ public class Program {
         if (n < 1) {
             System.out.println("Order cancelled\n");
         }
-
         else {
-
             for (int i = 0; i < n; i++) {
                 sc.nextLine();
                 System.out.println("Enter #" + (i + 1) + " item data:");
@@ -65,23 +63,22 @@ public class Program {
                 order.addItem(new OrderItem(productQuantity, productPrice, new Product(productName, productPrice)));
             }
 
+            System.out.println("ORDER SUMMARY: ");
+            System.out.println("Order moment: " + sdf.format(cal.getTime()));
+            System.out.println("Order status: " + status);
+            System.out.println("Client: " + client.getName() + " (" + sdf2.format(client.getBirthDate()) + ") - " + client.getEmail());
+            System.out.println("Order Items:");
+            for (OrderItem orderItem : order.getOrderItems()) {
+                System.out.println(orderItem.getProduct().getName()
+                        + ", $ "
+                        + String.format("%.2f", orderItem.getPrice())
+                        + ", Quantity: "
+                        + orderItem.getQuantity()
+                        + ", Subtotal: $ "
+                        + String.format("%.2f", orderItem.subTotal()));
+            }
+            System.out.println("Total price: $ " + String.format("%.2f", order.total()));
         }
-
-        System.out.println("ORDER SUMMARY: ");
-        System.out.println("Order moment: " + sdf.format(cal.getTime()));
-        System.out.println("Order status: " + status);
-        System.out.println("Client: " + client.getName() + " (" + sdf2.format(client.getBirthDate()) + ") - " + client.getEmail());
-        System.out.println("Order Items:");
-        for (OrderItem orderItem : order.getOrderItems()) {
-            System.out.println(orderItem.getProduct().getName()
-                    + ", $ "
-                    + String.format("%.2f", orderItem.getPrice())
-                    + ", Quantity: "
-                    + orderItem.getQuantity()
-                    + ", Subtotal: $ "
-                    + String.format("%.2f", orderItem.subTotal()));
-        }
-        System.out.println("Total price: $ " + String.format("%.2f", order.total()));
 
         sc.close();
     }
