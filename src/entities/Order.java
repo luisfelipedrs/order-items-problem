@@ -11,15 +11,16 @@ public class Order {
     private Date moment;
     private OrderStatus status;
 
-    private List<OrderItem> orderItems = new ArrayList<>();
     private Client client;
+    private List<OrderItem> orderItems = new ArrayList<>();
 
     public Order() {
     }
 
-    public Order(Date moment, OrderStatus status) {
+    public Order(Date moment, OrderStatus status, Client client) {
         this.moment = moment;
         this.status = status;
+        this.client = client;
     }
 
     public Date getMoment() {
